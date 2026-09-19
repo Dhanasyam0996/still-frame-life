@@ -35,7 +35,7 @@ function Dashboard() {
   const startDemo = useDemoMode((s) => s.start);
   const navigate = useNavigate();
 
-  const validation = runValidation(data, { scope: "city" });
+  const validation = runValidation(data, { kind: "city" });
   const errors = validation.filter((v) => v.status === "ERROR").length;
   const warnings = validation.filter((v) => v.status === "WARNING").length;
   const totalVolume = data.properties.reduce((sum, p) => sum + p.volumeM3, 0);

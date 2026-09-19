@@ -58,7 +58,7 @@ function AiPage() {
       const related = conflicts.filter((c) =>
         c.entityIds.some((id) => id === target || props.some((p) => p.id === id)),
       );
-      const checks = runValidation(data, { scope: "building", id: target });
+      const checks = runValidation(data, { kind: "building", id: target });
       const errors = checks.filter((c) => c.status === "ERROR");
       const withoutId = props.filter((p) => !p.ulpinId);
       const totalVolume = props.reduce((s, p) => s + p.volumeM3, 0);

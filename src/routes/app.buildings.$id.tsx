@@ -48,7 +48,7 @@ function BuildingDetail() {
     (a, b) => b.level - a.level,
   );
   const properties = data.properties.filter((p) => p.buildingId === building.id);
-  const checks = runValidation(data, { scope: "building", id: building.id });
+  const checks = runValidation(data, { kind: "building", id: building.id });
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-6">

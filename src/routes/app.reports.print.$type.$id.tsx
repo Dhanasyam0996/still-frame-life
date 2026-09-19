@@ -226,7 +226,7 @@ function ReportPrint() {
       );
     }
   } else if (type === "validation") {
-    const checks = runValidation(data, { scope: "city" });
+    const checks = runValidation(data, { kind: "city" });
     heading = "Validation report — whole dataset";
     body = (
       <Section title={`${checks.length} checks`}>

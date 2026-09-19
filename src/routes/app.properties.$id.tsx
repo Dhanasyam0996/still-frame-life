@@ -62,7 +62,7 @@ function PropertyDetail() {
   const ulpin = data.ulpins.find((u) => u.propertyId === property.id);
   const related = conflicts.filter((c) => c.entityIds.includes(property.id));
   const utilities = data.utilities.filter((u) => u.connectedPropertyIds.includes(property.id));
-  const checks = runValidation(data, { scope: "building", id: property.buildingId }).filter((c) =>
+  const checks = runValidation(data, { kind: "building", id: property.buildingId }).filter((c) =>
     c.evidenceIds.includes(property.id),
   );
 

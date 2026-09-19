@@ -52,7 +52,7 @@ function ParcelDetail() {
 
   const buildings = data.buildings.filter((b) => b.parcelId === parcel.id);
   const properties = data.properties.filter((p) => p.parcelId === parcel.id);
-  const checks = runValidation(data, { scope: "parcel", id: parcel.id });
+  const checks = runValidation(data, { kind: "parcel", id: parcel.id });
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-6">
