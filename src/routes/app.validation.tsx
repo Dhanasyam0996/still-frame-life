@@ -45,10 +45,12 @@ function ValidationPage() {
     const [kind, id] = scope.split(":");
     window.setTimeout(() => {
       setResults(
-        runValidation(data, {
-          scope: (kind as "city" | "parcel" | "building") ?? "city",
-          id,
-        }),
+        runValidation(
+          data,
+          kind === "parcel" || kind === "building"
+            ? { kind, id: id ?? "" }
+            : { kind: "city" },
+        ),
       );
       setRunning(false);
     }, 320);
