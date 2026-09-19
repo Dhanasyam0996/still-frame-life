@@ -17,6 +17,7 @@ import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppMapRouteImport } from './routes/app.map'
 import { Route as AppParcelsIndexRouteImport } from './routes/app.parcels.index'
+import { Route as AppParcelsIdRouteImport } from './routes/app.parcels.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const AppParcelsIndexRoute = AppParcelsIndexRouteImport.update({
   path: '/parcels/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppParcelsIdRoute = AppParcelsIdRouteImport.update({
+  id: '/parcels/$id',
+  path: '/parcels/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/': typeof AppIndexRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
   '/app/parcels/': typeof AppParcelsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app': typeof AppIndexRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
   '/app/parcels': typeof AppParcelsIndexRoute
 }
 export interface FileRoutesById {
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/': typeof AppIndexRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
   '/app/parcels/': typeof AppParcelsIndexRoute
 }
 export interface FileRouteTypes {
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/map'
     | '/app/'
+    | '/app/parcels/$id'
     | '/app/parcels/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/map'
     | '/app'
+    | '/app/parcels/$id'
     | '/app/parcels'
   id:
     | '__root__'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/map'
     | '/app/'
+    | '/app/parcels/$id'
     | '/app/parcels/'
   fileRoutesById: FileRoutesById
 }
@@ -186,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppParcelsIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/parcels/$id': {
+      id: '/app/parcels/$id'
+      path: '/parcels/$id'
+      fullPath: '/app/parcels/$id'
+      preLoaderRoute: typeof AppParcelsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -193,6 +212,7 @@ interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppMapRoute: typeof AppMapRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppParcelsIdRoute: typeof AppParcelsIdRoute
   AppParcelsIndexRoute: typeof AppParcelsIndexRoute
 }
 
@@ -200,6 +220,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppMapRoute: AppMapRoute,
   AppIndexRoute: AppIndexRoute,
+  AppParcelsIdRoute: AppParcelsIdRoute,
   AppParcelsIndexRoute: AppParcelsIndexRoute,
 }
 
