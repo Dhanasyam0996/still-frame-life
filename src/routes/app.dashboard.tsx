@@ -128,7 +128,8 @@ function Dashboard() {
               <button
                 key={c.id}
                 onClick={() => {
-                  select({ propertyId: c.entityIds.find((id) => id.startsWith("A-")) });
+                  const pid = c.entityIds.find((id) => id.startsWith("A-"));
+                  if (pid) select({ propertyId: pid });
                   setConflictView(c.id);
                   navigate({ to: "/app/map" });
                 }}
