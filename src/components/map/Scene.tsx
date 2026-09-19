@@ -546,8 +546,8 @@ function CameraRig({ controlsRef }: { controlsRef: React.RefObject<any> }) {
         distance = 100;
       }
     } else {
-      target.set(87, 10, -25);
-      distance = 260;
+      target.set(121, 12, -87);
+      distance = 250;
     }
 
     const dir = new THREE.Vector3(0.75, underground ? 0.42 : 0.62, 0.75).normalize();
