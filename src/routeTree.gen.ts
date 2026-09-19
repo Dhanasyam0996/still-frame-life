@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppConflictsRouteImport } from './routes/app.conflicts'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppMapRouteImport } from './routes/app.map'
 import { Route as AppUlpinRouteImport } from './routes/app.ulpin'
@@ -49,6 +50,11 @@ const LoginRoute = LoginRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictsRoute = AppConflictsRouteImport.update({
+  id: '/conflicts',
+  path: '/conflicts',
   getParentRoute: () => AppRoute,
 } as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
+  '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/login'
+    | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
     | '/app/ulpin'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/login'
+    | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
     | '/app/ulpin'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/login'
+    | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
     | '/app/ulpin'
@@ -259,6 +271,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/conflicts': {
+      id: '/app/conflicts'
+      path: '/conflicts'
+      fullPath: '/app/conflicts'
+      preLoaderRoute: typeof AppConflictsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/dashboard': {
@@ -342,6 +361,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppConflictsRoute: typeof AppConflictsRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppMapRoute: typeof AppMapRoute
   AppUlpinRoute: typeof AppUlpinRoute
@@ -357,6 +377,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppConflictsRoute: AppConflictsRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppMapRoute: AppMapRoute,
   AppUlpinRoute: AppUlpinRoute,
