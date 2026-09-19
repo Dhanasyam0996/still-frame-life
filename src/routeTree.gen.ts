@@ -17,6 +17,7 @@ import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAiRouteImport } from './routes/app.ai'
 import { Route as AppConflictsRouteImport } from './routes/app.conflicts'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppDataSourcesRouteImport } from './routes/app.data-sources'
 import { Route as AppMapRouteImport } from './routes/app.map'
 import { Route as AppUlpinRouteImport } from './routes/app.ulpin'
 import { Route as AppUtilitiesRouteImport } from './routes/app.utilities'
@@ -68,6 +69,11 @@ const AppConflictsRoute = AppConflictsRouteImport.update({
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDataSourcesRoute = AppDataSourcesRouteImport.update({
+  id: '/data-sources',
+  path: '/data-sources',
   getParentRoute: () => AppRoute,
 } as any)
 const AppMapRoute = AppMapRouteImport.update({
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
@@ -207,6 +216,7 @@ export interface FileRouteTypes {
     | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
+    | '/app/data-sources'
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
+    | '/app/data-sources'
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
+    | '/app/data-sources'
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
@@ -328,6 +340,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/app/dashboard'
       preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/data-sources': {
+      id: '/app/data-sources'
+      path: '/data-sources'
+      fullPath: '/app/data-sources'
+      preLoaderRoute: typeof AppDataSourcesRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/map': {
@@ -421,6 +440,7 @@ interface AppRouteChildren {
   AppAiRoute: typeof AppAiRoute
   AppConflictsRoute: typeof AppConflictsRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppDataSourcesRoute: typeof AppDataSourcesRoute
   AppMapRoute: typeof AppMapRoute
   AppUlpinRoute: typeof AppUlpinRoute
   AppUtilitiesRoute: typeof AppUtilitiesRoute
@@ -440,6 +460,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAiRoute: AppAiRoute,
   AppConflictsRoute: AppConflictsRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppDataSourcesRoute: AppDataSourcesRoute,
   AppMapRoute: AppMapRoute,
   AppUlpinRoute: AppUlpinRoute,
   AppUtilitiesRoute: AppUtilitiesRoute,
