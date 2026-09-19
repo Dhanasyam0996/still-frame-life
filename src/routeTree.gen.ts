@@ -19,6 +19,7 @@ import { Route as AppConflictsRouteImport } from './routes/app.conflicts'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppDataSourcesRouteImport } from './routes/app.data-sources'
 import { Route as AppMapRouteImport } from './routes/app.map'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppUlpinRouteImport } from './routes/app.ulpin'
 import { Route as AppUtilitiesRouteImport } from './routes/app.utilities'
 import { Route as AppValidationRouteImport } from './routes/app.validation'
@@ -79,6 +80,11 @@ const AppDataSourcesRoute = AppDataSourcesRouteImport.update({
 const AppMapRoute = AppMapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => AppRoute,
 } as any)
 const AppUlpinRoute = AppUlpinRouteImport.update({
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
   '/app/validation': typeof AppValidationRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
   '/app/validation': typeof AppValidationRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
   '/app/validation': typeof AppValidationRoute
@@ -218,6 +227,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/data-sources'
     | '/app/map'
+    | '/app/settings'
     | '/app/ulpin'
     | '/app/utilities'
     | '/app/validation'
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/data-sources'
     | '/app/map'
+    | '/app/settings'
     | '/app/ulpin'
     | '/app/utilities'
     | '/app/validation'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/data-sources'
     | '/app/map'
+    | '/app/settings'
     | '/app/ulpin'
     | '/app/utilities'
     | '/app/validation'
@@ -356,6 +368,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMapRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/ulpin': {
       id: '/app/ulpin'
       path: '/ulpin'
@@ -442,6 +461,7 @@ interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppDataSourcesRoute: typeof AppDataSourcesRoute
   AppMapRoute: typeof AppMapRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppUlpinRoute: typeof AppUlpinRoute
   AppUtilitiesRoute: typeof AppUtilitiesRoute
   AppValidationRoute: typeof AppValidationRoute
@@ -462,6 +482,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppDataSourcesRoute: AppDataSourcesRoute,
   AppMapRoute: AppMapRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppUlpinRoute: AppUlpinRoute,
   AppUtilitiesRoute: AppUtilitiesRoute,
   AppValidationRoute: AppValidationRoute,
