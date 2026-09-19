@@ -18,6 +18,7 @@ import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppMapRouteImport } from './routes/app.map'
 import { Route as AppUlpinRouteImport } from './routes/app.ulpin'
 import { Route as AppUtilitiesRouteImport } from './routes/app.utilities'
+import { Route as AppValidationRouteImport } from './routes/app.validation'
 import { Route as AppBuildingsIndexRouteImport } from './routes/app.buildings.index'
 import { Route as AppBuildingsIdRouteImport } from './routes/app.buildings.$id'
 import { Route as AppParcelsIndexRouteImport } from './routes/app.parcels.index'
@@ -70,6 +71,11 @@ const AppUtilitiesRoute = AppUtilitiesRouteImport.update({
   path: '/utilities',
   getParentRoute: () => AppRoute,
 } as any)
+const AppValidationRoute = AppValidationRouteImport.update({
+  id: '/validation',
+  path: '/validation',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppBuildingsIndexRoute = AppBuildingsIndexRouteImport.update({
   id: '/buildings/',
   path: '/buildings/',
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app/': typeof AppIndexRoute
   '/app/buildings/$id': typeof AppBuildingsIdRoute
   '/app/parcels/$id': typeof AppParcelsIdRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app': typeof AppIndexRoute
   '/app/buildings/$id': typeof AppBuildingsIdRoute
   '/app/parcels/$id': typeof AppParcelsIdRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/app/map': typeof AppMapRoute
   '/app/ulpin': typeof AppUlpinRoute
   '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app/': typeof AppIndexRoute
   '/app/buildings/$id': typeof AppBuildingsIdRoute
   '/app/parcels/$id': typeof AppParcelsIdRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
+    | '/app/validation'
     | '/app/'
     | '/app/buildings/$id'
     | '/app/parcels/$id'
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
+    | '/app/validation'
     | '/app'
     | '/app/buildings/$id'
     | '/app/parcels/$id'
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/app/map'
     | '/app/ulpin'
     | '/app/utilities'
+    | '/app/validation'
     | '/app/'
     | '/app/buildings/$id'
     | '/app/parcels/$id'
@@ -277,6 +289,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppUtilitiesRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/validation': {
+      id: '/app/validation'
+      path: '/validation'
+      fullPath: '/app/validation'
+      preLoaderRoute: typeof AppValidationRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/buildings/': {
       id: '/app/buildings/'
       path: '/buildings'
@@ -327,6 +346,7 @@ interface AppRouteChildren {
   AppMapRoute: typeof AppMapRoute
   AppUlpinRoute: typeof AppUlpinRoute
   AppUtilitiesRoute: typeof AppUtilitiesRoute
+  AppValidationRoute: typeof AppValidationRoute
   AppIndexRoute: typeof AppIndexRoute
   AppBuildingsIdRoute: typeof AppBuildingsIdRoute
   AppParcelsIdRoute: typeof AppParcelsIdRoute
@@ -341,6 +361,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppMapRoute: AppMapRoute,
   AppUlpinRoute: AppUlpinRoute,
   AppUtilitiesRoute: AppUtilitiesRoute,
+  AppValidationRoute: AppValidationRoute,
   AppIndexRoute: AppIndexRoute,
   AppBuildingsIdRoute: AppBuildingsIdRoute,
   AppParcelsIdRoute: AppParcelsIdRoute,
