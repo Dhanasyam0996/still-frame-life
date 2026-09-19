@@ -16,6 +16,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppMapRouteImport } from './routes/app.map'
+import { Route as AppParcelsIndexRouteImport } from './routes/app.parcels.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const AppMapRoute = AppMapRouteImport.update({
   path: '/map',
   getParentRoute: () => AppRoute,
 } as any)
+const AppParcelsIndexRoute = AppParcelsIndexRouteImport.update({
+  id: '/parcels/',
+  path: '/parcels/',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/': typeof AppIndexRoute
+  '/app/parcels/': typeof AppParcelsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app': typeof AppIndexRoute
+  '/app/parcels': typeof AppParcelsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,13 +87,28 @@ export interface FileRoutesById {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
   '/app/': typeof AppIndexRoute
+  '/app/parcels/': typeof AppParcelsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/app' | '/login' | '/app/dashboard' | '/app/map' | '/app/'
+    | '/'
+    | '/about'
+    | '/app'
+    | '/login'
+    | '/app/dashboard'
+    | '/app/map'
+    | '/app/'
+    | '/app/parcels/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/app/dashboard' | '/app/map' | '/app'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/app/dashboard'
+    | '/app/map'
+    | '/app'
+    | '/app/parcels'
   id:
     | '__root__'
     | '/'
@@ -95,6 +118,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/map'
     | '/app/'
+    | '/app/parcels/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -155,6 +179,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMapRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/parcels/': {
+      id: '/app/parcels/'
+      path: '/parcels'
+      fullPath: '/app/parcels/'
+      preLoaderRoute: typeof AppParcelsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -162,12 +193,14 @@ interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppMapRoute: typeof AppMapRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppParcelsIndexRoute: typeof AppParcelsIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppMapRoute: AppMapRoute,
   AppIndexRoute: AppIndexRoute,
+  AppParcelsIndexRoute: AppParcelsIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
