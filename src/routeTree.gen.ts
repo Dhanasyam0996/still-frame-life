@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAiRouteImport } from './routes/app.ai'
 import { Route as AppConflictsRouteImport } from './routes/app.conflicts'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppMapRouteImport } from './routes/app.map'
@@ -50,6 +51,11 @@ const LoginRoute = LoginRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAiRoute = AppAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
   getParentRoute: () => AppRoute,
 } as any)
 const AppConflictsRoute = AppConflictsRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
   '/app/conflicts': typeof AppConflictsRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/map': typeof AppMapRoute
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/login'
+    | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/login'
+    | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/app'
     | '/login'
+    | '/app/ai'
     | '/app/conflicts'
     | '/app/dashboard'
     | '/app/map'
@@ -271,6 +283,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/ai': {
+      id: '/app/ai'
+      path: '/ai'
+      fullPath: '/app/ai'
+      preLoaderRoute: typeof AppAiRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/conflicts': {
@@ -361,6 +380,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAiRoute: typeof AppAiRoute
   AppConflictsRoute: typeof AppConflictsRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppMapRoute: typeof AppMapRoute
@@ -377,6 +397,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAiRoute: AppAiRoute,
   AppConflictsRoute: AppConflictsRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppMapRoute: AppMapRoute,
