@@ -28,6 +28,7 @@ import { Route as AppParcelsIdRouteImport } from './routes/app.parcels.$id'
 import { Route as AppPropertiesIndexRouteImport } from './routes/app.properties.index'
 import { Route as AppPropertiesIdRouteImport } from './routes/app.properties.$id'
 import { Route as AppReportsIndexRouteImport } from './routes/app.reports.index'
+import { Route as AppReportsPrintTypeIdRouteImport } from './routes/app.reports.print.$type.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -124,6 +125,11 @@ const AppReportsIndexRoute = AppReportsIndexRouteImport.update({
   path: '/reports/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppReportsPrintTypeIdRoute = AppReportsPrintTypeIdRouteImport.update({
+  id: '/reports/print/$type/$id',
+  path: '/reports/print/$type/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/app/parcels/': typeof AppParcelsIndexRoute
   '/app/properties/': typeof AppPropertiesIndexRoute
   '/app/reports/': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/app/parcels': typeof AppParcelsIndexRoute
   '/app/properties': typeof AppPropertiesIndexRoute
   '/app/reports': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -187,6 +195,7 @@ export interface FileRoutesById {
   '/app/parcels/': typeof AppParcelsIndexRoute
   '/app/properties/': typeof AppPropertiesIndexRoute
   '/app/reports/': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/app/parcels/'
     | '/app/properties/'
     | '/app/reports/'
+    | '/app/reports/print/$type/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/app/parcels'
     | '/app/properties'
     | '/app/reports'
+    | '/app/reports/print/$type/$id'
   id:
     | '__root__'
     | '/'
@@ -251,6 +262,7 @@ export interface FileRouteTypes {
     | '/app/parcels/'
     | '/app/properties/'
     | '/app/reports/'
+    | '/app/reports/print/$type/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -395,6 +407,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppReportsIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/reports/print/$type/$id': {
+      id: '/app/reports/print/$type/$id'
+      path: '/reports/print/$type/$id'
+      fullPath: '/app/reports/print/$type/$id'
+      preLoaderRoute: typeof AppReportsPrintTypeIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -414,6 +433,7 @@ interface AppRouteChildren {
   AppParcelsIndexRoute: typeof AppParcelsIndexRoute
   AppPropertiesIndexRoute: typeof AppPropertiesIndexRoute
   AppReportsIndexRoute: typeof AppReportsIndexRoute
+  AppReportsPrintTypeIdRoute: typeof AppReportsPrintTypeIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -432,6 +452,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppParcelsIndexRoute: AppParcelsIndexRoute,
   AppPropertiesIndexRoute: AppPropertiesIndexRoute,
   AppReportsIndexRoute: AppReportsIndexRoute,
+  AppReportsPrintTypeIdRoute: AppReportsPrintTypeIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
