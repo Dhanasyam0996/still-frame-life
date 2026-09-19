@@ -547,7 +547,7 @@ function CameraRig({ controlsRef }: { controlsRef: React.RefObject<any> }) {
       }
     } else {
       target.set(87, 10, -25);
-      distance = 150;
+      distance = 260;
     }
 
     const dir = new THREE.Vector3(0.75, underground ? 0.42 : 0.62, 0.75).normalize();
@@ -650,7 +650,7 @@ export function Scene() {
   return (
     <>
       {cameraMode === "3d" ? (
-        <PerspectiveCamera makeDefault fov={40} position={[160, 110, 120]} far={2000} />
+        <PerspectiveCamera makeDefault fov={45} position={[250, 180, 190]} far={2000} />
       ) : (
         <OrthographicCamera makeDefault position={[87, 220, -25]} zoom={3.2} near={-500} far={2000} />
       )}
@@ -664,7 +664,7 @@ export function Scene() {
       <CameraRig controlsRef={controlsRef} />
 
       <color attach="background" args={["#0b1117"]} />
-      <fog attach="fog" args={["#0b1117", 250, 700]} />
+      <fog attach="fog" args={["#0b1117", 380, 900]} />
       <hemisphereLight args={["#9cc4e4", "#0b1117", 0.5]} />
       <directionalLight
         position={[60, 120, 40]}
