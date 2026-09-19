@@ -108,7 +108,7 @@ export function DataTable<T extends { id: string }>({
       </div>
 
       {visible.length === 0 ? (
-        <EmptyState title={emptyTitle} body={emptyBody} />
+        <EmptyState title={emptyTitle} description={emptyBody} />
       ) : (
         <div className="overflow-x-auto rounded-md border border-border">
           <table className="w-full border-collapse text-xs">

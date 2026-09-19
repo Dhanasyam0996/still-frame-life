@@ -65,24 +65,24 @@ function Dashboard() {
       />
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Parcels" value={data.parcels.length} hint={m2(totalArea)} icon={Layers} />
+        <StatCard label="Parcels" value={data.parcels.length} hint={m2(totalArea)} icon={<Layers className="size-4" />} />
         <StatCard
           label="Buildings"
           value={data.buildings.length}
           hint={`${data.floors.length} floors modelled`}
-          icon={Building2}
+          icon={<Building2 className="size-4" />}
         />
         <StatCard
           label="3D properties"
           value={data.properties.length}
           hint={`${m3(totalVolume)} of owned space`}
-          icon={Boxes}
+          icon={<Boxes className="size-4" />}
         />
         <StatCard
           label="Utility lines"
           value={data.utilities.length}
           hint={`${data.utilities.reduce((s, u) => s + u.lengthM, 0).toFixed(0)} m total`}
-          icon={Waypoints}
+          icon={<Waypoints className="size-4" />}
         />
       </div>
 
