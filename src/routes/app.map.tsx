@@ -5,9 +5,8 @@ import { MapView } from "@/components/map/MapView";
 import { useCadastre } from "@/store/useCadastre";
 
 export const Route = createFileRoute("/app/map")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    select: typeof search.select === "string" ? search.select : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { select?: string } =>
+    typeof search["select"] === "string" ? { select: search["select"] } : {},
   head: () => ({
     meta: [
       { title: "3D Map — 3D-CADASTRE AI" },
