@@ -14,7 +14,23 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAiRouteImport } from './routes/app.ai'
+import { Route as AppConflictsRouteImport } from './routes/app.conflicts'
+import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppDataSourcesRouteImport } from './routes/app.data-sources'
 import { Route as AppMapRouteImport } from './routes/app.map'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppUlpinRouteImport } from './routes/app.ulpin'
+import { Route as AppUtilitiesRouteImport } from './routes/app.utilities'
+import { Route as AppValidationRouteImport } from './routes/app.validation'
+import { Route as AppBuildingsIndexRouteImport } from './routes/app.buildings.index'
+import { Route as AppBuildingsIdRouteImport } from './routes/app.buildings.$id'
+import { Route as AppParcelsIndexRouteImport } from './routes/app.parcels.index'
+import { Route as AppParcelsIdRouteImport } from './routes/app.parcels.$id'
+import { Route as AppPropertiesIndexRouteImport } from './routes/app.properties.index'
+import { Route as AppPropertiesIdRouteImport } from './routes/app.properties.$id'
+import { Route as AppReportsIndexRouteImport } from './routes/app.reports.index'
+import { Route as AppReportsPrintTypeIdRouteImport } from './routes/app.reports.print.$type.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,9 +57,89 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAiRoute = AppAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConflictsRoute = AppConflictsRouteImport.update({
+  id: '/conflicts',
+  path: '/conflicts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDataSourcesRoute = AppDataSourcesRouteImport.update({
+  id: '/data-sources',
+  path: '/data-sources',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppMapRoute = AppMapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppUlpinRoute = AppUlpinRouteImport.update({
+  id: '/ulpin',
+  path: '/ulpin',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppUtilitiesRoute = AppUtilitiesRouteImport.update({
+  id: '/utilities',
+  path: '/utilities',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppValidationRoute = AppValidationRouteImport.update({
+  id: '/validation',
+  path: '/validation',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBuildingsIndexRoute = AppBuildingsIndexRouteImport.update({
+  id: '/buildings/',
+  path: '/buildings/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBuildingsIdRoute = AppBuildingsIdRouteImport.update({
+  id: '/buildings/$id',
+  path: '/buildings/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppParcelsIndexRoute = AppParcelsIndexRouteImport.update({
+  id: '/parcels/',
+  path: '/parcels/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppParcelsIdRoute = AppParcelsIdRouteImport.update({
+  id: '/parcels/$id',
+  path: '/parcels/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPropertiesIndexRoute = AppPropertiesIndexRouteImport.update({
+  id: '/properties/',
+  path: '/properties/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPropertiesIdRoute = AppPropertiesIdRouteImport.update({
+  id: '/properties/$id',
+  path: '/properties/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsIndexRoute = AppReportsIndexRouteImport.update({
+  id: '/reports/',
+  path: '/reports/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsPrintTypeIdRoute = AppReportsPrintTypeIdRouteImport.update({
+  id: '/reports/print/$type/$id',
+  path: '/reports/print/$type/$id',
   getParentRoute: () => AppRoute,
 } as any)
 
@@ -52,15 +148,47 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
+  '/app/conflicts': typeof AppConflictsRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/ulpin': typeof AppUlpinRoute
+  '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app/': typeof AppIndexRoute
+  '/app/buildings/$id': typeof AppBuildingsIdRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
+  '/app/properties/$id': typeof AppPropertiesIdRoute
+  '/app/buildings/': typeof AppBuildingsIndexRoute
+  '/app/parcels/': typeof AppParcelsIndexRoute
+  '/app/properties/': typeof AppPropertiesIndexRoute
+  '/app/reports/': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
+  '/app/conflicts': typeof AppConflictsRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/ulpin': typeof AppUlpinRoute
+  '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app': typeof AppIndexRoute
+  '/app/buildings/$id': typeof AppBuildingsIdRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
+  '/app/properties/$id': typeof AppPropertiesIdRoute
+  '/app/buildings': typeof AppBuildingsIndexRoute
+  '/app/parcels': typeof AppParcelsIndexRoute
+  '/app/properties': typeof AppPropertiesIndexRoute
+  '/app/reports': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -68,15 +196,97 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/app': typeof AppRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/ai': typeof AppAiRoute
+  '/app/conflicts': typeof AppConflictsRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/data-sources': typeof AppDataSourcesRoute
   '/app/map': typeof AppMapRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/ulpin': typeof AppUlpinRoute
+  '/app/utilities': typeof AppUtilitiesRoute
+  '/app/validation': typeof AppValidationRoute
   '/app/': typeof AppIndexRoute
+  '/app/buildings/$id': typeof AppBuildingsIdRoute
+  '/app/parcels/$id': typeof AppParcelsIdRoute
+  '/app/properties/$id': typeof AppPropertiesIdRoute
+  '/app/buildings/': typeof AppBuildingsIndexRoute
+  '/app/parcels/': typeof AppParcelsIndexRoute
+  '/app/properties/': typeof AppPropertiesIndexRoute
+  '/app/reports/': typeof AppReportsIndexRoute
+  '/app/reports/print/$type/$id': typeof AppReportsPrintTypeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/app' | '/login' | '/app/map' | '/app/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/app'
+    | '/login'
+    | '/app/ai'
+    | '/app/conflicts'
+    | '/app/dashboard'
+    | '/app/data-sources'
+    | '/app/map'
+    | '/app/settings'
+    | '/app/ulpin'
+    | '/app/utilities'
+    | '/app/validation'
+    | '/app/'
+    | '/app/buildings/$id'
+    | '/app/parcels/$id'
+    | '/app/properties/$id'
+    | '/app/buildings/'
+    | '/app/parcels/'
+    | '/app/properties/'
+    | '/app/reports/'
+    | '/app/reports/print/$type/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/login' | '/app/map' | '/app'
-  id: '__root__' | '/' | '/about' | '/app' | '/login' | '/app/map' | '/app/'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/app/ai'
+    | '/app/conflicts'
+    | '/app/dashboard'
+    | '/app/data-sources'
+    | '/app/map'
+    | '/app/settings'
+    | '/app/ulpin'
+    | '/app/utilities'
+    | '/app/validation'
+    | '/app'
+    | '/app/buildings/$id'
+    | '/app/parcels/$id'
+    | '/app/properties/$id'
+    | '/app/buildings'
+    | '/app/parcels'
+    | '/app/properties'
+    | '/app/reports'
+    | '/app/reports/print/$type/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/app'
+    | '/login'
+    | '/app/ai'
+    | '/app/conflicts'
+    | '/app/dashboard'
+    | '/app/data-sources'
+    | '/app/map'
+    | '/app/settings'
+    | '/app/ulpin'
+    | '/app/utilities'
+    | '/app/validation'
+    | '/app/'
+    | '/app/buildings/$id'
+    | '/app/parcels/$id'
+    | '/app/properties/$id'
+    | '/app/buildings/'
+    | '/app/parcels/'
+    | '/app/properties/'
+    | '/app/reports/'
+    | '/app/reports/print/$type/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -123,6 +333,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/ai': {
+      id: '/app/ai'
+      path: '/ai'
+      fullPath: '/app/ai'
+      preLoaderRoute: typeof AppAiRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/conflicts': {
+      id: '/app/conflicts'
+      path: '/conflicts'
+      fullPath: '/app/conflicts'
+      preLoaderRoute: typeof AppConflictsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/dashboard': {
+      id: '/app/dashboard'
+      path: '/dashboard'
+      fullPath: '/app/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/data-sources': {
+      id: '/app/data-sources'
+      path: '/data-sources'
+      fullPath: '/app/data-sources'
+      preLoaderRoute: typeof AppDataSourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/map': {
       id: '/app/map'
       path: '/map'
@@ -130,17 +368,133 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMapRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/ulpin': {
+      id: '/app/ulpin'
+      path: '/ulpin'
+      fullPath: '/app/ulpin'
+      preLoaderRoute: typeof AppUlpinRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/utilities': {
+      id: '/app/utilities'
+      path: '/utilities'
+      fullPath: '/app/utilities'
+      preLoaderRoute: typeof AppUtilitiesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/validation': {
+      id: '/app/validation'
+      path: '/validation'
+      fullPath: '/app/validation'
+      preLoaderRoute: typeof AppValidationRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/buildings/': {
+      id: '/app/buildings/'
+      path: '/buildings'
+      fullPath: '/app/buildings/'
+      preLoaderRoute: typeof AppBuildingsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/buildings/$id': {
+      id: '/app/buildings/$id'
+      path: '/buildings/$id'
+      fullPath: '/app/buildings/$id'
+      preLoaderRoute: typeof AppBuildingsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/parcels/': {
+      id: '/app/parcels/'
+      path: '/parcels'
+      fullPath: '/app/parcels/'
+      preLoaderRoute: typeof AppParcelsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/parcels/$id': {
+      id: '/app/parcels/$id'
+      path: '/parcels/$id'
+      fullPath: '/app/parcels/$id'
+      preLoaderRoute: typeof AppParcelsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/properties/': {
+      id: '/app/properties/'
+      path: '/properties'
+      fullPath: '/app/properties/'
+      preLoaderRoute: typeof AppPropertiesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/properties/$id': {
+      id: '/app/properties/$id'
+      path: '/properties/$id'
+      fullPath: '/app/properties/$id'
+      preLoaderRoute: typeof AppPropertiesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reports/': {
+      id: '/app/reports/'
+      path: '/reports'
+      fullPath: '/app/reports/'
+      preLoaderRoute: typeof AppReportsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reports/print/$type/$id': {
+      id: '/app/reports/print/$type/$id'
+      path: '/reports/print/$type/$id'
+      fullPath: '/app/reports/print/$type/$id'
+      preLoaderRoute: typeof AppReportsPrintTypeIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAiRoute: typeof AppAiRoute
+  AppConflictsRoute: typeof AppConflictsRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppDataSourcesRoute: typeof AppDataSourcesRoute
   AppMapRoute: typeof AppMapRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppUlpinRoute: typeof AppUlpinRoute
+  AppUtilitiesRoute: typeof AppUtilitiesRoute
+  AppValidationRoute: typeof AppValidationRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppBuildingsIdRoute: typeof AppBuildingsIdRoute
+  AppParcelsIdRoute: typeof AppParcelsIdRoute
+  AppPropertiesIdRoute: typeof AppPropertiesIdRoute
+  AppBuildingsIndexRoute: typeof AppBuildingsIndexRoute
+  AppParcelsIndexRoute: typeof AppParcelsIndexRoute
+  AppPropertiesIndexRoute: typeof AppPropertiesIndexRoute
+  AppReportsIndexRoute: typeof AppReportsIndexRoute
+  AppReportsPrintTypeIdRoute: typeof AppReportsPrintTypeIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAiRoute: AppAiRoute,
+  AppConflictsRoute: AppConflictsRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppDataSourcesRoute: AppDataSourcesRoute,
   AppMapRoute: AppMapRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppUlpinRoute: AppUlpinRoute,
+  AppUtilitiesRoute: AppUtilitiesRoute,
+  AppValidationRoute: AppValidationRoute,
   AppIndexRoute: AppIndexRoute,
+  AppBuildingsIdRoute: AppBuildingsIdRoute,
+  AppParcelsIdRoute: AppParcelsIdRoute,
+  AppPropertiesIdRoute: AppPropertiesIdRoute,
+  AppBuildingsIndexRoute: AppBuildingsIndexRoute,
+  AppParcelsIndexRoute: AppParcelsIndexRoute,
+  AppPropertiesIndexRoute: AppPropertiesIndexRoute,
+  AppReportsIndexRoute: AppReportsIndexRoute,
+  AppReportsPrintTypeIdRoute: AppReportsPrintTypeIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

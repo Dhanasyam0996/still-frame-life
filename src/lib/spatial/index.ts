@@ -33,8 +33,8 @@ export function boxCenter(b: Box3D): Vec3 {
 /** Touching faces are NOT an overlap (epsilon guarded). */
 export function aabbOverlap3D(a: Box3D, b: Box3D, eps = 1e-4): boolean {
   for (let i = 0; i < 3; i++) {
-    if (a.min[i] >= b.max[i] - eps) return false;
-    if (b.min[i] >= a.max[i] - eps) return false;
+    if (a.min[i]! >= b.max[i]! - eps) return false;
+    if (b.min[i]! >= a.max[i]! - eps) return false;
   }
   return true;
 }
